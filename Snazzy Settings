@@ -1,3 +1,16 @@
+
+!# /usr/bin/bash
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Install Xcode command line tools.
+xcode-select --install
+
+
 #Turn off Auto Correct
   defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
   defaults write -g NSAutomaticTextCompletionEnabled -bool false
@@ -34,7 +47,7 @@
   defaults write com.apple.dock wvous-br-corner -int 4 && killall Dock
   
 #Alphabetic System Preferences
-
+defaults write com.apple.systempreferences "ShowAllMode" -bool true
 
 
 #Finder Preferences
@@ -79,8 +92,8 @@ defaults write com.apple.finder AppleShowAllFiles -string YES
 
 #Dock Hide Delay
 #Faster Dock Hiding
-  defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0;killall Dock
-  #defaults write com.apple.dock autohide-delay -float 0.5; defaults write com.apple.dock autohide-time-modifier -int 0.5 ;killall Dock
+  defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -float 0;killall Dock
+  #defaults write com.apple.dock autohide-delay -float 0.5; defaults write com.apple.dock autohide-time-modifier -float 0.5 ;killall Dock
 
 #Add Dock Spacer
   defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock
@@ -106,6 +119,17 @@ defaults write com.apple.finder AppleShowAllFiles -string YES
 
 #Charlie Add-ons
 # Many via https://charlesreid1.com/wiki/Maya/mac_settings.sh
+# and https://gist.github.com/wass3r/ef4340becd1624d3f041
+
+#enable three-finger drag
+defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
+defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+
+
+# Set default view to list
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"; killall Finder
 
 #Set sidebar icon size to large
   defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "3" && killall Finder
