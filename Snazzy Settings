@@ -105,6 +105,8 @@ defaults write com.apple.finder AppleShowAllFiles -string YES
 
 
 #Charlie Add-ons
+# Many via https://charlesreid1.com/wiki/Maya/mac_settings.sh
+
 #Set sidebar icon size to large
   defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "3" && killall Finder
 
