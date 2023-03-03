@@ -1,14 +1,15 @@
 
 !# /usr/bin/bash
 
-# Ask for the administrator password upfront
-sudo -v
+# Snazzy Labs recommended 25 Bare Minimum Settings
+# https://www.youtube.com/watch?v=psPgSN1bPLY
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# Collated by Charlie Nancarrow 2023 @eWhizz
+# Please check these are what you really wish to do
+# I may add in commands to reverse these
+# Outputting the current state before changing might be helpful
 
-# Install Xcode command line tools.
-xcode-select --install
+# Lots more useful settings (to me) at the bottom of this script
 
 
 #Turn off Auto Correct
