@@ -106,8 +106,11 @@ defaults write com.apple.finder AppleShowAllFiles -string YES
   defaults write com.apple.TimeMachine "DoNotOfferNewDisksForBackup" -bool "true" 
 
 
-#Change Screenshot Default to jpg
-  defaults write com.apple.screencapture type jpg
+#Change Screenshot Default to jpg (Snazzy's recommendation), png is really better as a lossless sharp, shadow with transparaency etc
+#  defaults write com.apple.screencapture type jpg
+defaults write com.apple.screencapture type png
+
+
 
 #Make Hidden Apps Transparent
   defaults write com.apple.Dock showhidden -bool TRUE && killall Dock
