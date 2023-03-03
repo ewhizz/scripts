@@ -126,6 +126,9 @@ defaults write com.apple.screencapture type png
 # Many via https://charlesreid1.com/wiki/Maya/mac_settings.sh
 # and https://gist.github.com/wass3r/ef4340becd1624d3f041
 
+#Enable text substitions in more apps
+defaults write -g WebAutomaticTextReplacementEnabled -bool true
+
 #enable three-finger drag
 defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
 defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
