@@ -1,0 +1,62 @@
+#Turn off Auto Correct
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g NSAutomaticTextCompletionEnabled -bool false
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+
+
+#Fix Share Sheet
+
+#Making Siri Tolerable
+
+# Your Dock is an Abomination
+
+#Set Dock on Left
+#Automatically hide and show dock
+#Minimise using scale
+#Turn off recent apps
+
+
+#Spicy Corners
+
+#Alphabetic System Preferences
+
+#Finder Preferences
+  #Show Hard disks
+  #New finder windows show: Desktop
+#Sidebar
+  #Turn off recents
+  #Turn on Home
+  #Turn off tags
+#Show all filename extensions
+#Customise Tool Bar
+  #Add Airdrop
+#Show Path Bar
+#Show status Bar
+#View Options
+#Change background of Desktop folder to a tint
+
+
+#Dock Hide Delay
+#Faster Dock Hiding
+defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0;killall Dock
+#defaults write com.apple.dock autohide-delay -float 0.5; defaults write com.apple.dock autohide-time-modifier -int 0.5 ;killall Dock
+
+#Add Dock Spacer
+defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock
+#Add Half Height Spacer
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}' && killall Dock
+
+
+#Disable Annoying Disk Warning
+defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES && sudo pkill diskarbitrationd
+
+#Change Screenshot Default to jpg
+defaults write com.apple.screencapture type jpg
+
+#Make Hidden Apps Transparent
+defaults write com.apple.Dock showhidden -bool TRUE && killall Dock
+
+
+
+
