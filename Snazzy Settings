@@ -19,10 +19,16 @@ xcode-select --install
 
 
 #Fix Share Sheet
+# TBC
+# Not really sure what Snazzy settled on here
+
 
 #Making Siri Tolerable
-	#Voice Feedback off
-	#Turn on Enable Type to Siri
+#Voice Feedback off
+  defaults write com.apple.assistant.backedup "Use device speaker for TTS" -int 3
+
+#Turn on Enable Type to Siri
+  defaults write com.apple.Siri.plist TypeToSiriEnabled -bool true
 
 
 #Your Dock is an Abomination
