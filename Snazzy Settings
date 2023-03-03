@@ -21,9 +21,11 @@ xcode-select --install
 #Fix Share Sheet
 
 #Making Siri Tolerable
+	#Voice Feedback off
+	#Turn on Enable Type to Siri
 
 
-# Your Dock is an Abomination
+#Your Dock is an Abomination
 
 #Set Dock on Left
   defaults write com.apple.dock "orientation" -string "left" && killall Dock
@@ -129,6 +131,15 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
 defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
+#Siri
+defaults write com.apple.systemuiserver "NSStatusItem Visible Siri" -bool false
+
+#Add sensible menuextras back in
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.airport" -bool true
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.appleuser" -bool true
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.battery" -bool true
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 
 
 # Set default view to list
