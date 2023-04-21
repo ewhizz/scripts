@@ -11,6 +11,7 @@
   Removes the UK keyboard layout and sets the US keyboard layout.
   Installs the PSWindowsUpdate module (if not already installed), runs Windows updates, and does not reboot
   Removes any McAfee products installed on the computer.
+  Removed any Xbox related products installed on the computer.
   Sets the taskbar alignment to the left and turns off the chat taskbar item.
   Removes all desktop icons and shows the "This PC" icon on the desktop.
   Saves the computer's name, model, manufacture serial number and main specifications (cpu, RAM, Storage size) in a text file on the desktop.
