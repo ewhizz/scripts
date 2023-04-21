@@ -96,6 +96,26 @@ if ($mcAfeeProducts.Count -gt 0) {
     Write-Host "No McAfee products found."
 }
 
+# Uninstall Xbox programs
+$XboxPackages = @(
+    "Microsoft.XboxApp"
+    "Microsoft.XboxGameOverlay"
+    "Microsoft.XboxGamingOverlay"
+    "Microsoft.XboxIdentityProvider"
+    "Microsoft.XboxSpeechToTextOverlay"
+    "Microsoft.MixedReality.Portal"
+)
+
+ForEach ($package in $XboxPackages) {
+    $packageFullName = (Get-AppxPackage -AllUsers | Where-Object { $_.Name -eq $package }).PackageFullName
+    if ($packageFullName) {
+        Write-Host "Uninstalling package: $packageFullName"
+        Remove-AppxPackage -AllUsers -Package $packageFullName -ErrorAction SilentlyContinue
+    } else {
+        Write-Host "Package not found: $package"
+    }
+}
+
 
 # Set Visual Effects to Performance
 [System.Environment]::SetEnvironmentVariable("COMPLUS_EnableBMGraphics", 0, "Machine")
