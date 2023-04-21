@@ -14,6 +14,7 @@
   Removed any Xbox related products installed on the computer.
   Sets the taskbar alignment to the left and turns off the chat taskbar item.
   Removes all desktop icons and shows the "This PC" icon on the desktop.
+  Pin required apps to Taskbar
   Saves the computer's name, model, manufacture serial number and main specifications (cpu, RAM, Storage size) in a text file on the desktop.
   Ceate Restore Point
   
@@ -123,12 +124,45 @@ ForEach ($package in $XboxPackages) {
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v VisualFXSetting /t REG_DWORD /d 2 /f
 
 
-
 # Remove icons from Desktop
 Get-ChildItem -Path "$env:userprofile\desktop" -Include "Computer.lnk", "Control Panel.lnk", "Network.lnk", "Recycle Bin.lnk" -Recurse | Remove-Item -Force
 
 # Show PC on desktop
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" -Name "{20D04FE0-3AEA-1069-A2D8-08002B30309D}" -Value 0
+
+# Pins apps to Taskbar
+function Pin-AppToTaskbar {
+    param (
+        [Parameter(Mandatory)][string]$AppPath
+    )
+
+    $shell = New-Object -ComObject "Shell.Application"
+    $folder = Split-Path $AppPath
+    $file = Split-Path $AppPath -Leaf
+    $item = $shell.Namespace($folder).ParseName($file)
+    $verb = $item.Verbs() | Where-Object { $_.Name -eq 'Pin to Tas&kbar' }
+    if ($verb) {
+        $verb.DoIt()
+        Write-Host "Pinned to taskbar: $AppPath"
+    } else {
+        Write-Host "Could not pin to taskbar: $AppPath"
+    }
+}
+
+$AppsToPin = @(
+    "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE",
+    "C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE",
+    "C:\Program Files\Google\Chrome\Application\chrome.exe"
+)
+
+ForEach ($app in $AppsToPin) {
+    if (Test-Path $app) {
+        Pin-AppToTaskbar -AppPath $app
+    } else {
+        Write-Host "App not found: $app"
+    }
+}
+
 
 # Set taskbar alignment to the left 
 New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAl" -Value 0 -Force
